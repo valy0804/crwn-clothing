@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -23,6 +23,7 @@ const SignUpForm = () => {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     if (password !== confirmPassword) {
       alert("password do not match");
       return;
@@ -34,7 +35,7 @@ const SignUpForm = () => {
         password
       );
 
-      await createUserDocumentFromAuth(user, displayName);
+      await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
@@ -61,7 +62,7 @@ const SignUpForm = () => {
           type="text"
           required
           onChange={handleChange}
-          name="display name"
+          name="displayName"
           value={displayName}
         />
 
