@@ -4,7 +4,7 @@ import "./product-card.styles.scss";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 const ProductCard = ({ product }) => {
-  const { name, price, imageUrl } = product;
+  const { name, price, id, imageUrl } = product;
   const { addItemToCart } = useContext(CartContext);
 
   const addProductToCart = () => addItemToCart(product);
